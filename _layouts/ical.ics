@@ -25,13 +25,13 @@ PRODID:https://tender-galileo-12a91c.netlify.com/
 METHOD:PUBLISH
 {% assign sorted = site.posts | sort: 'date' | reverse %}{%- for post in sorted -%}{%- if post.tags -%}{%- for cat in post.tags -%}{%- if cat == page.title -%}
 BEGIN:VEVENT
-UID:{{ post.date | date: "%Y%m%d" }}@example.com
+UID:{{ post.id | slugify }}@tender-galileo-12a91c.netlify.com
 ORGANIZER;CN="Anonymous Do-Gooder":MAILTO:noonehome@nothere.nope
 LOCATION:{% if post.event_location %}{{ post.event_location }}{% endif %}
 SUMMARY:{{ post.title }}
 CLASS:PUBLIC
-DTSTART{% if post.event_tz %};TZID={{ post.event_tz }}{% endif %}:{{ post.event_start }}
-DTEND{% if post.event_tz %};TZID={{ post.event_tz }}{% endif %}:{{ post.event_end }}
+DTSTART{% if post.event_tzid %};TZID={{ post.event_tzid }}{% endif %}{% if post.event_tzname %};TZNAME={{ post.event_tzname }}{% endif %}:{{ post.event_start }}
+DTEND{% if post.event_tzid %};TZID={{ post.event_tzid }}{% endif %}{% if post.event_tzname %};TZNAME={{ post.event_tzname }}{% endif %}:{{ post.event_end }}
 DTSTAMP:{{ post.date | date: "%Y%m%dT%H%M%SZ" }}
 END:VEVENT
 {% endif %}
