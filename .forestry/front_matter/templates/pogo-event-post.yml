@@ -24,5 +24,3 @@ fields:
     source:
       type: simple
   name: event_tzid
-pages:
-- _posts/test.md
