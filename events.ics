@@ -1,0 +1,18 @@
+---
+layout: none
+---
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:http://www.example.com/
+METHOD:PUBLISH
+{% for post in site.posts %}BEGIN:VEVENT
+UID:{{ post.date | date: "%Y%m%d" }}@example.com
+ORGANIZER;CN="Organizer Name":MAILTO:organizer@example.org
+LOCATION:The Adress of the example
+SUMMARY:{{ post.title }}
+CLASS:PUBLIC
+DTSTART:{{ post.event_start | date: "%Y%m%dT%H%M%SZ" }}
+DTEND:{{ post.event_end | date: "%Y%m%dT%H%M%SZ" }}
+DTSTAMP:{{ post.date | date: "%Y%m%dT%H%M%SZ" }}
+END:VEVENT{% endfor %}
+END:VCALENDAR
