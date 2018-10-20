@@ -11,8 +11,8 @@ ORGANIZER;CN="Organizer Name":MAILTO:organizer@example.org
 LOCATION:The Adress of the example
 SUMMARY:{{ post.title }}
 CLASS:PUBLIC
-DTSTART:{{ post.event_start }}
-DTEND:{{ post.event_end }}
+DTSTART{%- if post.event_tz -%};TZID={{ post.event_tz }}{%- endif -%}:{{ post.event_start }}
+DTEND{%- if post.event_tz -%};TZID={{ post.event_tz }}{%- endif -%}:{{ post.event_end }}
 DTSTAMP:{{ post.date | date: "%Y%m%dT%H%M%SZ" }}
 END:VEVENT{% endfor %}
 END:VCALENDAR
