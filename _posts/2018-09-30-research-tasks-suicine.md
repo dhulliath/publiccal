@@ -4,5 +4,7 @@ title: Suicine Research Task Reward
 event_start: 20181001T120000
 event_end: 20181031T235959
 event_tz: America/Edmonton
-categories: pokemongoedmonton
+tags: 
+ - pokemongoedmonton
+ - pogo
 ---

@@ -23,7 +23,7 @@ END:STANDARD
 END:VTIMEZONE
 PRODID:https://tender-galileo-12a91c.netlify.com/
 METHOD:PUBLISH
-{% assign sorted = site.posts | sort: 'date' | reverse %}{%- for post in sorted -%}{%- if post.categories -%}{%- for cat in post.categories -%}{%- if cat == page.title -%}
+{% assign sorted = site.posts | sort: 'date' | reverse %}{%- for post in sorted -%}{%- if post.tags -%}{%- for cat in post.tags -%}{%- if cat == page.title -%}
 BEGIN:VEVENT
 UID:{{ post.date | date: "%Y%m%d" }}@example.com
 ORGANIZER;CN="Anonymous Do-Gooder":MAILTO:noonehome@nothere.nope
