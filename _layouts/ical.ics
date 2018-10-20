@@ -1,0 +1,40 @@
+---
+layout: none
+---
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VTIMEZONE
+TZID:America/Edmonton
+X-LIC-LOCATION:America/Edmonton
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0600
+TZNAME:MDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0700
+TZNAME:MST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+PRODID:https://tender-galileo-12a91c.netlify.com/
+METHOD:PUBLISH
+{% assign sorted = site.posts | sort: 'date' | reverse %}{%- for post in sorted -%}{%- if post.categories -%}{%- for cat in post.categories -%}{%- if cat == page.title -%}
+BEGIN:VEVENT
+UID:{{ post.date | date: "%Y%m%d" }}@example.com
+ORGANIZER;CN="Anonymous Do-Gooder":MAILTO:noonehome@nothere.nope
+LOCATION:{% if post.event_location %}{{ post.event_location }}{% endif %}
+SUMMARY:{{ post.title }}
+CLASS:PUBLIC
+DTSTART{% if post.event_tz %};TZID={{ post.event_tz }}{% endif %}:{{ post.event_start }}
+DTEND{% if post.event_tz %};TZID={{ post.event_tz }}{% endif %}:{{ post.event_end }}
+DTSTAMP:{{ post.date | date: "%Y%m%dT%H%M%SZ" }}
+END:VEVENT
+{% endif %}
+{%- endfor -%}
+{%- endif -%}
+{%- endfor -%}END:VCALENDAR
