@@ -4,3 +4,9 @@
 
 layout: home
 ---
+
+Pokémon Go events, published in iCal format.
+
+No this ain't pretty, but it's what you'll get.
+
+Subscribe, links in top-right.
