@@ -23,8 +23,7 @@ END:STANDARD
 END:VTIMEZONE
 PRODID:http://www.example.com/
 METHOD:PUBLISH
-{% for post in site.posts %}
-BEGIN:VEVENT
+{% for post in site.posts %}BEGIN:VEVENT
 UID:{{ post.date | date: "%Y%m%d" }}@example.com
 ORGANIZER;CN="Organizer Name":MAILTO:organizer@example.org
 LOCATION:The Adress of the example
@@ -33,5 +32,5 @@ CLASS:PUBLIC
 DTSTART{%- if post.event_tz -%};TZID={{ post.event_tz }}{%- endif -%}:{{ post.event_start }}
 DTEND{%- if post.event_tz -%};TZID={{ post.event_tz }}{%- endif -%}:{{ post.event_end }}
 DTSTAMP:{{ post.date | date: "%Y%m%dT%H%M%SZ" }}
-END:VEVENT{% endfor %}
-END:VCALENDAR
+END:VEVENT
+{% endfor %}END:VCALENDAR
