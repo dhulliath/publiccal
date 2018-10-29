@@ -1,4 +1,6 @@
 ---
 layout: ical
-select_tag: pokemongo
+select_tags: 
+ - pokemongona
+ - pokemongo
 ---

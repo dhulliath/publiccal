@@ -5,7 +5,6 @@ event_start: '20181005T000000'
 event_end: '20181015T000000'
 event_tzid: 'America/Edmonton'
 tags: 
- - pokemongoedmonton
- - pokemongo
+ - pokemongona
 ---
 Psychic Pokemon show up in the wild more often!

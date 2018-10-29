@@ -5,8 +5,7 @@ event_start: 20181023T130000
 event_end: 20181101T130000
 event_tzname: PDT
 tags:
-  - pokemongo
-  - pokemongoedmonton
+  - pokemongona
 ---
 Limited time Special Research task.
 Ghost and Dark type Pokemon more frequent.

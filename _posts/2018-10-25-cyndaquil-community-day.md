@@ -5,6 +5,5 @@ event_start: 20181110T110000
 event_end: 20181110T140000
 event_tzname: PDT
 tags:
- - pokemongo
- - pokemongoedmonton
----
+ - pokemongona
+ ---

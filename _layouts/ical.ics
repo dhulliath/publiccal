@@ -23,7 +23,7 @@ END:STANDARD
 END:VTIMEZONE
 PRODID:https://tender-galileo-12a91c.netlify.com/
 METHOD:PUBLISH
-{% assign sorted = site.posts | sort: 'date' | reverse %}{%- for post in sorted -%}{%- if post.tags -%}{%- for cat in post.tags -%}{%- if cat == page.select_tag -%}
+{% assign sorted = site.posts | sort: 'date' | reverse %}{%- for post in sorted -%}{%- if post.tags -%}{%- for cat in post.tags -%}{%- for srch in page.select_tags -%}{%- if cat == srch -%}
 BEGIN:VEVENT
 UID:{{ post.id | slugify }}@tender-galileo-12a91c.netlify.com
 ORGANIZER;CN="Anonymous Do-Gooder":MAILTO:noonehome@nothere.nope
@@ -35,6 +35,7 @@ DTEND{% if post.event_tzid %};TZID={{ post.event_tzid }}{% endif %}{% if post.ev
 DTSTAMP:{{ post.date | date: "%Y%m%dT%H%M%SZ" }}
 END:VEVENT
 {% endif %}
+{%- endfor -%}
 {%- endfor -%}
 {%- endif -%}
 {%- endfor -%}END:VCALENDAR
