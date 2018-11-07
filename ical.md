@@ -4,6 +4,6 @@ title: iCal
 ---
 All events are shared in iCal files:
 
-[Edmonton Area](/cal/pogo_edmonton.ics)
+[North America](/cal/pogo_na.ics)
 
 [Worldwide Events](/cal/pogo_world.ics)
