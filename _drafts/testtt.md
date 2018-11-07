@@ -1,5 +1,11 @@
 ---
 title: testtt
 date: 2018-11-07 18:20:57 +0000
+tags: []
+event:
+  start: 2018-11-04 20:00:00 +0000
+  end: 2018-11-08 20:00:00 +0000
+  location: ''
+  timezone: PDT
 
 ---
