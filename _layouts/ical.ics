@@ -23,7 +23,18 @@ END:STANDARD
 END:VTIMEZONE
 PRODID:https://tender-galileo-12a91c.netlify.com/
 METHOD:PUBLISH
-{% assign sorted = site.posts | sort: 'date' | reverse %}{%- for post in sorted -%}{%- if post.tags -%}{%- for cat in post.tags -%}{%- for srch in page.select_tags -%}{%- if cat == srch -%}
+{% assign sorted = site.posts | sort: 'date' | reverse %}{%- for post in sorted -%}{%- if post.tags -%}{%- for cat in post.tags -%}{%- for srch in page.select_tags -%}{%- if cat == srch -%}{%- if post.event -%}
+BEGIN:VEVENT
+UID:{{ post.id | slugify }}@tender-galileo-12a91c.netlify.com
+ORGANIZER;CN="Anonymous Do-Gooder":MAILTO:noonehome@nothere.nope
+LOCATION:{% if post.event_location %}{{ post.event_location }}{% endif %}
+SUMMARY:{{ post.title }}
+CLASS:PUBLIC
+DTSTART;TZNAME={{ post.event.timezone | date: "%Z"}}:{{ post.event.start | date: "%Y%m%dT%H%M%S" }}
+DTEND;TZNAME={{ post.event.timezone | date: "%Z"}}:{{ post.event.end | date: "%Y%m%dT%H%M%S" }}
+DTSTAMP:{{ post.date | date: "%Y%m%dT%H%M%SZ" }}
+END:VEVENT
+{%- else -%}
 BEGIN:VEVENT
 UID:{{ post.id | slugify }}@tender-galileo-12a91c.netlify.com
 ORGANIZER;CN="Anonymous Do-Gooder":MAILTO:noonehome@nothere.nope
@@ -33,7 +44,7 @@ CLASS:PUBLIC
 DTSTART{% if post.event_tzid %};TZID={{ post.event_tzid }}{% endif %}{% if post.event_tzname %};TZNAME={{ post.event_tzname }}{% endif %}:{{ post.event_start }}
 DTEND{% if post.event_tzid %};TZID={{ post.event_tzid }}{% endif %}{% if post.event_tzname %};TZNAME={{ post.event_tzname }}{% endif %}:{{ post.event_end }}
 DTSTAMP:{{ post.date | date: "%Y%m%dT%H%M%SZ" }}
-END:VEVENT
+END:VEVENT{% endif %}
 {% endif %}
 {%- endfor -%}
 {%- endfor -%}
